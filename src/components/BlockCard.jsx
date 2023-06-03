@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { alchemySDK } from "../utils/alchemy-settings.js";
 import { ethers } from "ethers";
+import { Utils } from "alchemy-sdk";
 
 export default function BlockCard({ block }) {
   const [blockData, setBlockData] = useState(null);
@@ -17,25 +18,40 @@ export default function BlockCard({ block }) {
   function getShortAddress(address) {
     const firstChars = address.slice(0, 6);
     const lastChars = address.slice(-6);
-
     const shortAddress = `${firstChars}...${lastChars}`;
 
     return shortAddress;
   }
 
-  return (
-    <>
-      {!blockData && <p>Loading...</p>}
-      {blockData && (
+  // TODO: Loading animation
+  if (!blockData) {
+    return <p>Loading...</p>;
+  }
+
+  if (blockData) {
+    const gasPriceGwei = Utils.formatUnits(blockData.baseFeePerGas, "gwei");
+
+    const gasUsedNum = blockData.gasUsed.toNumber();
+    const gasSpentPercent = ((gasUsedNum / 30000000) * 100).toFixed(2);
+
+    const burntFees =
+      Utils.formatUnits(blockData.baseFeePerGas, "ether") * gasUsedNum;
+
+    return (
+      <>
         <div>
-          <h1>Block Information:</h1>
           <p>Number: {blockData.number}</p>
           <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
-
-          <p>Time since: {timeNow - blockData.timestamp ?? ""}</p>
+          <p>Time since: {timeNow - blockData.timestamp ?? ""} secs ago</p>
           <p>Txns: {blockData.transactions.length}</p>
+
+          <p>{`Gas Price: ${gasPriceGwei} gwei`}</p>
+          <p>{`Gas Used: ${gasUsedNum} (${gasSpentPercent}%)`}</p>
+
+          <p> {`Burnt Fees: ${burntFees} ETH`}</p>
         </div>
-      )}
-    </>
-  );
+        <hr />
+      </>
+    );
+  }
 }

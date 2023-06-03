@@ -2,17 +2,32 @@ import { useEffect, useState } from "react";
 import { alchemySDK } from "../utils/alchemy-settings.js";
 import BlockCard from "./BlockCard.jsx";
 
+const BLOCKS_TO_SHOW = 5;
+
 export default function BlockList() {
   const [latestBlockNumber, setLatestBlockNumber] = useState(null);
+  let arrayOfBlocks = [];
 
   useEffect(() => {
     async function getBlockNumber() {
-      setLatestBlockNumber(await alchemySDK.core.getBlockNumber());
+      const blockNumber = await alchemySDK.core.getBlockNumber();
+      setLatestBlockNumber(blockNumber);
     }
     getBlockNumber();
   }, []);
 
-  console.log("BlockList rendered");
+  if (latestBlockNumber) {
+    for (let i = 0; i < BLOCKS_TO_SHOW; i++) {
+      arrayOfBlocks.push(latestBlockNumber - i);
+    }
+  }
 
-  return <BlockCard block={latestBlockNumber} />;
+  return (
+    <>
+      <h1>Latest Blocks:</h1>
+      {arrayOfBlocks.map((blockNumber) => (
+        <BlockCard block={blockNumber} />
+      ))}
+    </>
+  );
 }

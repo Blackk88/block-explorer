@@ -1,10 +1,22 @@
-// import { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import BlockList from "./components/BlockList";
+import Home from "./components/Home";
 
 import "./App.css";
-import BlockList from "./components/BlockList";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/blocks",
+    element: <BlockList />,
+  },
+]);
 
 function App() {
-  return <BlockList />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
