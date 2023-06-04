@@ -39,18 +39,24 @@ export default function BlockCard({ block }) {
 
     return (
       <>
-        <div>
-          <p>Number: {blockData.number}</p>
-          <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
-          <p>Time since: {timeNow - blockData.timestamp ?? ""} secs ago</p>
-          <p>Txns: {blockData.transactions.length}</p>
+        <div className="container mx-auto justify-between items-center flex border py-4 px-5 my-5 shadow md:w-2/3 rounded">
+          <div>
+            <p>Block: {blockData.number}</p>
+            <p className="text-xs italic">
+              {timeNow - blockData.timestamp ?? ""} secs ago
+            </p>
+          </div>
+          <div>
+            <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
+            <p>Txns: {blockData.transactions.length}</p>
+          </div>
 
-          <p>{`Gas Price: ${gasPriceGwei} gwei`}</p>
+          {/* <p>{`Gas Price: ${gasPriceGwei} gwei`}</p>
           <p>{`Gas Used: ${gasUsedNum} (${gasSpentPercent}%)`}</p>
 
-          <p> {`Burnt Fees: ${burntFees} ETH`}</p>
+          <p> {`Burnt Fees: ${burntFees} ETH`}</p> */}
         </div>
-        <hr />
+        {/* <hr /> */}
       </>
     );
   }

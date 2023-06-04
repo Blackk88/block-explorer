@@ -2,8 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BlockList from "./components/BlockList";
 import Home from "./components/Home";
 
-import "./App.css";
-
 const router = createBrowserRouter([
   {
     path: "/",
