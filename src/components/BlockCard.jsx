@@ -25,21 +25,13 @@ export default function BlockCard({ block }) {
 
   // TODO: Loading animation
   if (!blockData) {
-    return <p>Loading...</p>;
+    return <p className="text-center my-4">Loading...</p>;
   }
 
   if (blockData) {
-    const gasPriceGwei = Utils.formatUnits(blockData.baseFeePerGas, "gwei");
-
-    const gasUsedNum = blockData.gasUsed.toNumber();
-    const gasSpentPercent = ((gasUsedNum / 30000000) * 100).toFixed(2);
-
-    const burntFees =
-      Utils.formatUnits(blockData.baseFeePerGas, "ether") * gasUsedNum;
-
     return (
       <>
-        <div className="container mx-auto justify-between items-center flex  py-4 px-5 my-5 border border-dotted border-cyan-500 md:w-2/3 rounded">
+        <div className="container mx-auto justify-between items-center flex py-4 px-5 my-5 border border-dotted border-cyan-500 md:w-2/3 rounded shadow-inner">
           <div>
             <Link
               to={`/blocks/${blockData.number}`}

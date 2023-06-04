@@ -25,7 +25,7 @@ export default function BlockDetails() {
   }
 
   if (!blockData) {
-    return <p>Loading...</p>;
+    return <p className="text-center text-lg">Loading...</p>;
   }
 
   if (blockData) {
