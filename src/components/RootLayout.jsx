@@ -8,7 +8,7 @@ export default function RootLayout() {
         <Link to="/" className="uppercase hover:font-medium">
           Blocks
         </Link>
-        <Link to="/accounts" className="uppercase hover:font-medium">
+        <Link to="/account" className="uppercase hover:font-medium">
           Accounts
         </Link>
       </nav>

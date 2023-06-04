@@ -44,7 +44,14 @@ export default function TransactionsList() {
               {tx.transactionHash?.slice(0, 20) ?? ""}...
             </p>
             <p>{tx.from.slice(0, 6) + "..." + tx.from.slice(-6)}</p>
-            <p>{tx.to?.slice(0, 6) + "..." + tx.to.slice(-6)}</p>
+            {tx.contractAddress && (
+              <p>
+                {tx.contractAddress?.slice(0, 6) +
+                  "..." +
+                  tx.contractAddress.slice(-6)}
+              </p>
+            )}
+            {tx.to && <p>{tx.to?.slice(0, 6) + "..." + tx.to.slice(-6)}</p>}
           </Link>
         ))}
       </div>

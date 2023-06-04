@@ -40,7 +40,7 @@ export default function BlockDetails() {
     const date = new Date(blockData.timestamp * 1000);
 
     return (
-      <div className="container px-2">
+      <div className="container px-2 mx-auto max-w-3xl">
         <div className="border border-blue-300 rounded-lg mx-auto p-4">
           <div className="flex my-2">
             <p className="text-neutral-400 w-1/3">Block height</p>{" "}

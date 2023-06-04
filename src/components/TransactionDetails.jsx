@@ -28,7 +28,7 @@ export default function TransactionDetails() {
     const fee = gasUsedNum * gasPriceEth;
 
     return (
-      <div className="px-5">
+      <div className="px-5 container mx-auto max-w-5xl">
         <div className="text-center mb-5">
           <h1 className="text-xl ">Transaction Details</h1>
           <p

@@ -5,6 +5,8 @@ import BlockDetails from "./components/BlockDetails";
 import TransactionsList from "./components/TransactionsList";
 import TransactionDetails from "./components/TransactionDetails";
 import ErrorPage from "./components/ErrorPage";
+import AccountSearch from "./components/AccountSearch";
+import AccountDetails from "./components/AccountDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,16 @@ const router = createBrowserRouter([
       {
         path: "/:id/transactions/:txhash",
         element: <TransactionDetails />,
+      },
+      {
+        path: "/account",
+        element: <AccountSearch />,
+        children: [
+          {
+            path: ":address",
+            element: <AccountDetails />,
+          },
+        ],
       },
     ],
   },
