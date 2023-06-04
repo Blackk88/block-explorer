@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { alchemySDK } from "../utils/alchemy-settings.js";
-import { ethers } from "ethers";
 import { Utils } from "alchemy-sdk";
+import { Link } from "react-router-dom";
 
 export default function BlockCard({ block }) {
   const [blockData, setBlockData] = useState(null);
@@ -39,9 +39,14 @@ export default function BlockCard({ block }) {
 
     return (
       <>
-        <div className="container mx-auto justify-between items-center flex border py-4 px-5 my-5 shadow md:w-2/3 rounded">
+        <div className="container mx-auto justify-between items-center flex  py-4 px-5 my-5 border border-dotted border-cyan-500 md:w-2/3 rounded">
           <div>
-            <p>Block: {blockData.number}</p>
+            <Link
+              to={`/blocks/${blockData.number}`}
+              className="text-blue-500  hover:text-blue-700 hover:text-bold"
+            >
+              Block: {blockData.number}
+            </Link>
             <p className="text-xs italic">
               {timeNow - blockData.timestamp ?? ""} secs ago
             </p>
@@ -50,13 +55,7 @@ export default function BlockCard({ block }) {
             <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
             <p>Txns: {blockData.transactions.length}</p>
           </div>
-
-          {/* <p>{`Gas Price: ${gasPriceGwei} gwei`}</p>
-          <p>{`Gas Used: ${gasUsedNum} (${gasSpentPercent}%)`}</p>
-
-          <p> {`Burnt Fees: ${burntFees} ETH`}</p> */}
         </div>
-        {/* <hr /> */}
       </>
     );
   }

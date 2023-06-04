@@ -1,15 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BlockList from "./components/BlockList";
 import Home from "./components/Home";
+import BlockDetails from "./components/BlockDetails";
+import TransactionsList from "./components/TransactionsList";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Home />,
-  },
-  {
-    path: "/blocks",
-    element: <BlockList />,
+    children: [
+      {
+        path: "/",
+        element: <BlockList />,
+      },
+      {
+        path: "/blocks/:id",
+        element: <BlockDetails />,
+      },
+      {
+        path: "/blocks/:id/transactions",
+        element: <TransactionsList />,
+      },
+    ],
   },
 ]);
 

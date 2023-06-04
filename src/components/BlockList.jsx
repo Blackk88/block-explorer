@@ -24,9 +24,9 @@ export default function BlockList() {
 
   return (
     <>
-      <h1>Latest Blocks:</h1>
+      <h1 className="text-center text-xl bold ">Latest Blocks:</h1>
       {arrayOfBlocks.map((blockNumber) => (
-        <BlockCard block={blockNumber} />
+        <BlockCard key={blockNumber} block={blockNumber} />
       ))}
     </>
   );
