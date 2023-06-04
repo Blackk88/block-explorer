@@ -40,8 +40,8 @@ export default function BlockDetails() {
     const date = new Date(blockData.timestamp * 1000);
 
     return (
-      <>
-        <div className="container border mx-auto p-4">
+      <div className="container px-2">
+        <div className="border border-blue-300 rounded-lg mx-auto p-4">
           <div className="flex my-2">
             <p className="text-neutral-400 w-1/3">Block height</p>{" "}
             <p>{blockData.number}</p>
@@ -68,15 +68,14 @@ export default function BlockDetails() {
           <div className="flex my-2">
             <p className="text-neutral-400 w-1/3">Transactions</p>
             <Link
-              to={`/blocks/${id}/transactions`}
+              to={`/${id}/transactions`}
               className="text-blue-400 hover:text-blue-600"
             >
               {blockData.transactions.length} Txs
             </Link>
           </div>
         </div>
-        {isTxShown && <div>Placeholder for Txs</div>}
-      </>
+      </div>
     );
   }
 }

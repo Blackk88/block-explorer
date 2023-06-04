@@ -23,11 +23,11 @@ export default function BlockList() {
   }
 
   return (
-    <>
-      <h1 className="text-center text-xl bold ">Latest Blocks</h1>
+    <div className="px-2">
+      <h1 className="text-center text-xl bold">Latest Blocks</h1>
       {arrayOfBlocks.map((blockNumber) => (
         <BlockCard key={blockNumber} block={blockNumber} />
       ))}
-    </>
+    </div>
   );
 }

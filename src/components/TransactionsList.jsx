@@ -34,15 +34,17 @@ export default function TransactionsList() {
           <p>To</p>
         </div>
 
-        {txsData.map((tx) => (
+        {txsData?.map((tx) => (
           <Link
-            to={`/transactions/${tx.transactionHash}`}
+            to={`/${id}/transactions/${tx.transactionHash}`}
             key={tx.transactionHash}
             className="flex justify-between text-sm p-2 border my-4 shadow-blue-500 shadow hover:bg-blue-100"
           >
-            <p className="text-sm">{tx.transactionHash.slice(0, 20)}...</p>
+            <p className="text-sm">
+              {tx.transactionHash?.slice(0, 20) ?? ""}...
+            </p>
             <p>{tx.from.slice(0, 6) + "..." + tx.from.slice(-6)}</p>
-            <p>{tx.to.slice(0, 6) + "..." + tx.to.slice(-6)}</p>
+            <p>{tx.to?.slice(0, 6) + "..." + tx.to.slice(-6)}</p>
           </Link>
         ))}
       </div>

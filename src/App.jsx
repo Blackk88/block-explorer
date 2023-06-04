@@ -4,25 +4,27 @@ import RootLayout from "./components/RootLayout";
 import BlockDetails from "./components/BlockDetails";
 import TransactionsList from "./components/TransactionsList";
 import TransactionDetails from "./components/TransactionDetails";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <BlockList />,
       },
       {
-        path: "/blocks/:id",
+        path: "/:id",
         element: <BlockDetails />,
       },
       {
-        path: "/blocks/:id/transactions",
+        path: "/:id/transactions",
         element: <TransactionsList />,
       },
       {
-        path: "transactions/:id",
+        path: "/:id/transactions/:txhash",
         element: <TransactionDetails />,
       },
     ],

@@ -30,25 +30,23 @@ export default function BlockCard({ block }) {
 
   if (blockData) {
     return (
-      <>
-        <div className="container mx-auto justify-between items-center flex py-4 px-5 my-5 border border-dotted border-cyan-500 md:w-2/3 rounded shadow-inner">
-          <div>
-            <Link
-              to={`/blocks/${blockData.number}`}
-              className="text-blue-500  hover:text-blue-700 hover:text-bold"
-            >
-              Block: {blockData.number}
-            </Link>
-            <p className="text-xs italic">
-              {timeNow - blockData.timestamp ?? ""} secs ago
-            </p>
-          </div>
-          <div>
-            <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
-            <p>Txns: {blockData.transactions.length}</p>
-          </div>
+      <div className="container mx-auto justify-between items-center flex py-4 px-5 my-5 border border-dotted border-cyan-500 md:w-2/3 rounded shadow-inner">
+        <div>
+          <Link
+            to={`/${blockData.number}`}
+            className="text-blue-500  hover:text-blue-700 hover:text-bold"
+          >
+            Block: {blockData.number}
+          </Link>
+          <p className="text-xs italic">
+            {timeNow - blockData.timestamp ?? ""} secs ago
+          </p>
         </div>
-      </>
+        <div>
+          <p>Fee recipient: {getShortAddress(blockData.miner)}</p>
+          <p>Txns: {blockData.transactions.length}</p>
+        </div>
+      </div>
     );
   }
 }
