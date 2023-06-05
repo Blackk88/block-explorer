@@ -12,10 +12,10 @@ export default function AccountSearch() {
   }
 
   return (
-    <div className="container mx-auto px-3 max-w-3xl">
+    <div className="">
       <form
         action=""
-        className="flex flex-col sm:flex-row gap justify-center gap-3"
+        className="flex flex-col sm:flex-row gap justify-center gap-3 container mx-auto px-3 max-w-3xl"
         onSubmit={submitHandler}
       >
         <input

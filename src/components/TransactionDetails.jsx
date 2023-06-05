@@ -17,7 +17,7 @@ export default function TransactionDetails() {
   }, []);
 
   if (!txData) {
-    return <p>Loading...</p>;
+    return <p className="container mx-auto my-5 text-center">Loading...</p>;
   }
 
   if (txData) {
@@ -56,11 +56,21 @@ export default function TransactionDetails() {
           <hr />
           <div className="md:flex my-3">
             <p className="text-neutral-500 md:w-1/3">From</p>
-            <p className="text-sm">{txData.from}</p>
+            <Link
+              to={`/account/${txData.from}`}
+              className="text-sm text-blue-500 hover:text-blue-700"
+            >
+              {txData.from}
+            </Link>
           </div>
           <div className="md:flex my-3">
             <p className="text-neutral-500 md:w-1/3">To</p>
-            <p className="text-sm">{txData.to}</p>
+            <Link
+              to={`/account/${txData.to}`}
+              className="text-sm text-blue-500 hover:text-blue-700"
+            >
+              {txData.to}
+            </Link>
           </div>
           <hr />
           <div className="md:flex my-3">

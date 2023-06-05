@@ -19,7 +19,7 @@ export default function TransactionsList() {
   }, []);
 
   if (!txsData) {
-    return <p>Loading...</p>;
+    return <p className="container mx-auto my-5">Loading...</p>;
   }
 
   if (txsData) {
