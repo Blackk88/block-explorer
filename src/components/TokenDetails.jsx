@@ -5,8 +5,6 @@ import emptyLogo from "../assets/empty-token.webp";
 export default function TokenDetails({ token }) {
   const [metadata, setMetadata] = useState(null);
 
-  console.log(token);
-
   useEffect(() => {
     async function getMetadata() {
       const data = await alchemySDK.core.getTokenMetadata(
